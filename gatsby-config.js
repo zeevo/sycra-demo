@@ -2,7 +2,14 @@ module.exports = {
   siteMetadata: {
     title: `Sycra`,
     description: `Portfolio of artist Sycra Yasin`,
-    author: `@zeevosec`,
+    author: {
+      name: "Sycra Yasin",
+      email: "sycra7@gmail.com",
+      twitter: "https://twitter.com/Sycra",
+      patreon: "https://www.patreon.com/Sycra?ty=h",
+      facebook: "https://www.facebook.com/Sycra-Art-Videos-155843997850744/",
+      deviantart: "http://sycra.deviantart.com/",
+    },
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -23,10 +30,19 @@ module.exports = {
         start_url: `/`,
         background_color: `#663399`,
         theme_color: `#663399`,
-        display: `sycra`,
+        display: `minimal-ui`,
         icon: `src/images/logo.png`, // This path is relative to the root of the site.
       },
     },
+    {
+      resolve: "gatsby-source-filesystem",
+      options: {
+        path: `${__dirname}/content/`,
+      },
+    },
+
+    "gatsby-transformer-remark",
+
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

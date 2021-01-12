@@ -47,6 +47,15 @@ const Container = styled.div`
   padding: 1.45rem 1.0875rem;
 `
 
+const NavBarLink = styled(Link)`
+  text-decoration: none;
+  text-transform: capitalize;
+  color: #626262;
+  &:hover {
+    color: #4287f5;
+  }
+`
+
 const IHeader = ({ siteTitle }) => {
   const data = useStaticQuery(graphql`
     query {
@@ -75,6 +84,26 @@ const IHeader = ({ siteTitle }) => {
       }
     }
   `)
+
+  const navBar = [
+    {
+      to: "/about",
+      label: "ABOUT",
+    },
+    {
+      to: "/gallery",
+      label: "GALLERY",
+      draft: true,
+    },
+    {
+      to: "https://www.youtube.com/user/Sycra",
+      label: "YOUTUBE",
+    },
+    {
+      to: "/resources",
+      label: "RESOURCES",
+    },
+  ]
 
   return (
     <Header>
@@ -109,14 +138,18 @@ const IHeader = ({ siteTitle }) => {
                 border: "none",
                 height: "1px",
                 maxHeight: "1px",
+                marginBottom: ".5rem",
               }}
               placeholderStyle={{ visibility: "hidden" }}
             />
             <Nav>
-              <Link to="/about">About</Link>
-              <Link to="/gallery">gallery</Link>
-              <Link to="/youtube">youtube</Link>
-              <Link to="/resources">resources</Link>
+              {navBar.map(item =>
+                item.draft ? (
+                  <NavBarLink>{item.label}</NavBarLink>
+                ) : (
+                  <NavBarLink to={item.to}>{item.label}</NavBarLink>
+                )
+              )}
             </Nav>
           </FlexCol>
         </Flex>
