@@ -28,8 +28,8 @@ const Layout = ({ children }) => {
       <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
       <div
         style={{
-          margin: `0 auto`,
-          maxWidth: 960,
+          margin: `0px auto`,
+          maxWidth: 800,
           padding: `0 1.0875rem 1.45rem`,
         }}
       >
@@ -39,9 +39,7 @@ const Layout = ({ children }) => {
             marginTop: `2rem`,
           }}
         >
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.com">Gatsby</a>
+          Note: This is just a prototype demo, and not actually Sycra's site!
         </footer>
       </div>
     </>
