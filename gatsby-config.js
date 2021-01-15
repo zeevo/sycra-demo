@@ -6,22 +6,37 @@ module.exports = {
       name: "Sycra Yasin",
       email: "sycra7@gmail.com",
       twitter: "https://twitter.com/Sycra",
-      patreon: "https://www.patreon.com/Sycra?ty=h",
-      facebook: "https://www.facebook.com/Sycra-Art-Videos-155843997850744/",
-      deviantart: "http://sycra.deviantart.com/",
     },
+    footer: [
+      {
+        to: "https://twitter.com/Sycra",
+        icon: "twitter",
+      },
+      {
+        to: "https://www.patreon.com/Sycra?ty=h",
+        icon: "patreon",
+      },
+      {
+        to: "https://www.facebook.com/Sycra-Art-Videos-155843997850744/",
+        icon: "facebook",
+      },
+      {
+        to: "http://sycra.deviantart.com",
+        icon: "deviantart",
+      },
+    ],
     navbar: [
       {
         to: "/about",
         label: "ABOUT",
       },
       {
-        to: "https://www.youtube.com/user/Sycra",
-        label: "YOUTUBE",
-      },
-      {
         to: "/resources",
         label: "RESOURCES",
+      },
+      {
+        to: "https://www.youtube.com/user/Sycra",
+        label: "YOUTUBE",
       },
       {
         to: "https://discord.gg/t6THe9Z",

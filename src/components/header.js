@@ -1,22 +1,13 @@
 import { graphql, Link, useStaticQuery } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
-import Image from "./image"
+import Image from "./Image"
 import styled from "styled-components"
 
 const Header = styled.header`
   margin-bottom: 1.45rem;
   margin: 15px auto;
   width: 800px;
-`
-
-const H1 = styled.h1`
-  margin-bottom: 0px;
-  // top: "15px";
-  // width: "457px";
-  // height: "40px";
-  // position: "relative";
-  // left: "130px";
 `
 
 const Flex = styled.div`
@@ -54,9 +45,18 @@ const NavBarLink = styled(Link)`
   &:hover {
     color: #4287f5;
   }
+  @media screen and (max-width: 724px) {
+    display: none
+  },
 `
 
-const IHeader = ({ siteTitle }) => {
+const INavBarButton = styled.button`
+  @media screen and (min-width: 724px) {
+    display: none
+  },
+`
+
+const IHeader = ({ setMobileMenuOpen }) => {
   const data = useStaticQuery(graphql`
     query {
       logo: file(relativePath: { eq: "logo.png" }) {
@@ -116,14 +116,16 @@ const IHeader = ({ siteTitle }) => {
                 paddingTop: ".5rem",
               }}
             >
-              <Image
-                fluid={data.sycratext.childImageSharp.fluid}
-                loading="eager"
-                style={{
-                  width: "30%",
-                }}
-                placeholderStyle={{ visibility: "hidden" }}
-              />
+              <Link to="/" style={{ flexGrow: 0 }}>
+                <Image
+                  fluid={data.sycratext.childImageSharp.fluid}
+                  loading="eager"
+                  style={{
+                    width: "30%",
+                  }}
+                  placeholderStyle={{ visibility: "hidden" }}
+                />
+              </Link>
             </div>
 
             <Image
@@ -145,10 +147,27 @@ const IHeader = ({ siteTitle }) => {
                   <NavBarLink to={item.to}>{item.label}</NavBarLink>
                 )
               )}
+              <INavBarButton onClick={setMobileMenuOpen}>
+                <svg
+                  width="2em"
+                  height="2em"
+                  viewBox="0 0 16 16"
+                  fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"
+                  />
+                </svg>
+              </INavBarButton>
             </Nav>
           </FlexCol>
         </Flex>
       </Container>
+      <h1 style={{ visibility: "hidden", margin: "0px", fontSize: "1px" }}>
+        Sycra
+      </h1>
     </Header>
   )
 }

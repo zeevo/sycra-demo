@@ -5,11 +5,26 @@
  * See: https://www.gatsbyjs.com/docs/use-static-query/
  */
 
-import React from "react"
+import React, { useState } from "react"
 import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
+import styled from "styled-components"
+import { useStaticQuery, graphql, Link } from "gatsby"
 
-import Header from "./header"
+import Curtain from "./Curtain"
+import Header from "./Header"
+import Footer from "./Footer"
+
+const NavBarLink = styled(Link)`
+  text-decoration: none;
+  text-transform: capitalize;
+  color: #626262;
+  &:hover {
+    color: #4287f5;
+  }
+  @media screen and (max-width: 724px) {
+    display: none
+  },
+`
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -17,14 +32,24 @@ const Layout = ({ children }) => {
       site {
         siteMetadata {
           title
+          navbar {
+            to
+            label
+          }
         }
       }
     }
   `)
 
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
+      <Curtain onClose={() => setMobileMenuOpen(false)} isOpen={mobileMenuOpen}>
+        {data.site.siteMetadata.navbar.map(item => (
+          <NavBarLink to={item.to}>{item.label}</NavBarLink>
+        ))}
+      </Curtain>
       <div
         style={{
           margin: `0px auto`,
@@ -32,14 +57,9 @@ const Layout = ({ children }) => {
           padding: `0 1.0875rem 1.45rem`,
         }}
       >
+        <Header setMobileMenuOpen={setMobileMenuOpen} />
         <main>{children}</main>
-        <footer
-          style={{
-            marginTop: `2rem`,
-          }}
-        >
-          Note: This is just a prototype demo, and not actually Sycra's site!
-        </footer>
+        <Footer />
       </div>
     </>
   )
