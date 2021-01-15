@@ -82,28 +82,19 @@ const IHeader = ({ siteTitle }) => {
           }
         }
       }
+
+      site {
+        siteMetadata {
+          navbar {
+            to
+            label
+          }
+        }
+      }
     }
   `)
 
-  const navBar = [
-    {
-      to: "/about",
-      label: "ABOUT",
-    },
-    {
-      to: "/gallery",
-      label: "GALLERY",
-      draft: true,
-    },
-    {
-      to: "https://www.youtube.com/user/Sycra",
-      label: "YOUTUBE",
-    },
-    {
-      to: "/resources",
-      label: "RESOURCES",
-    },
-  ]
+  const { navbar } = data.site.siteMetadata
 
   return (
     <Header>
@@ -120,17 +111,21 @@ const IHeader = ({ siteTitle }) => {
             />
           </Link>
           <FlexCol>
-            <H1>
+            <div
+              style={{
+                paddingTop: ".5rem",
+              }}
+            >
               <Image
                 fluid={data.sycratext.childImageSharp.fluid}
                 loading="eager"
                 style={{
-                  width: "457px",
-                  height: "40px",
+                  width: "30%",
                 }}
                 placeholderStyle={{ visibility: "hidden" }}
               />
-            </H1>
+            </div>
+
             <Image
               fluid={data.hrt.childImageSharp.fluid}
               loading="eager"
@@ -143,7 +138,7 @@ const IHeader = ({ siteTitle }) => {
               placeholderStyle={{ visibility: "hidden" }}
             />
             <Nav>
-              {navBar.map(item =>
+              {navbar.map(item =>
                 item.draft ? (
                   <NavBarLink>{item.label}</NavBarLink>
                 ) : (

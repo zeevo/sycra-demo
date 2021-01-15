@@ -10,6 +10,24 @@ module.exports = {
       facebook: "https://www.facebook.com/Sycra-Art-Videos-155843997850744/",
       deviantart: "http://sycra.deviantart.com/",
     },
+    navbar: [
+      {
+        to: "/about",
+        label: "ABOUT",
+      },
+      {
+        to: "https://www.youtube.com/user/Sycra",
+        label: "YOUTUBE",
+      },
+      {
+        to: "/resources",
+        label: "RESOURCES",
+      },
+      {
+        to: "https://discord.gg/t6THe9Z",
+        label: "DISCORD",
+      },
+    ],
   },
   plugins: [
     `gatsby-plugin-styled-components`,
