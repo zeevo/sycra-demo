@@ -78,7 +78,7 @@ function Footer() {
         placeholderStyle={{ visibility: "hidden" }}
       />
       <Flex>
-        <small>©2016 Sycra Yasin. All rights reserved.</small>
+        <small>©2021 Sycra Yasin. All rights reserved.</small>
       </Flex>
     </footer>
   )
