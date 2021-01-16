@@ -1,7 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: `Sycra`,
+    title: `The Art of Sycra Yasin `,
     description: `Portfolio of artist Sycra Yasin`,
+    url: "https://sycra.net",
     author: {
       name: "Sycra Yasin",
       email: "sycra7@gmail.com",

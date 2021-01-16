@@ -7,8 +7,8 @@ import SEO from "../components/SEO"
 
 const IndexPage = props => {
   return (
-    <Layout>
-      <SEO title="The Art of Sycra Yasin - Concept art, Caricatures, Life Drawing" />
+    <Layout title="The Art of Sycra Yasin">
+      <SEO />
       <div style={{ display: "flex", justifyContent: "center" }}>
         <Image
           fluid={props.data.hero.childImageSharp.fluid}

@@ -26,7 +26,7 @@ const NavBarLink = styled(Link)`
   },
 `
 
-const Layout = ({ children }) => {
+const Layout = ({ title, children }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -58,7 +58,12 @@ const Layout = ({ children }) => {
         }}
       >
         <Header setMobileMenuOpen={setMobileMenuOpen} />
-        <main>{children}</main>
+        <main>
+          <h1 style={{ visibility: "hidden", margin: "0px", fontSize: "1px" }}>
+            {title}
+          </h1>
+          {children}
+        </main>
         <Footer />
       </div>
     </>

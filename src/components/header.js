@@ -165,9 +165,6 @@ const IHeader = ({ setMobileMenuOpen }) => {
           </FlexCol>
         </Flex>
       </Container>
-      <h1 style={{ visibility: "hidden", margin: "0px", fontSize: "1px" }}>
-        Sycra
-      </h1>
     </Header>
   )
 }

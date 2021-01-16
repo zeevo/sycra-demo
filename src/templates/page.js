@@ -6,8 +6,8 @@ import SEO from "../components/SEO"
 
 const Page = ({ data }) => {
   return (
-    <Layout>
-      <SEO title="The Art of Sycra Yasin - Concept art, Caricatures, Life Drawing" />
+    <Layout title={data.markdownRemark.title}>
+      <SEO title="Concept art, Caricatures, Life Drawing" />
       <div dangerouslySetInnerHTML={{ __html: data.markdownRemark.html }} />
     </Layout>
   )

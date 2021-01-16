@@ -11,18 +11,22 @@ import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 
 function SEO({ description, lang, meta, title }) {
-  const { site } = useStaticQuery(
+  const { site, file } = useStaticQuery(
     graphql`
       query {
         site {
           siteMetadata {
             title
             description
+            url
             author {
               twitter
               name
             }
           }
+        }
+        file(relativePath: { eq: "hero.jpg" }) {
+          publicURL
         }
       }
     `
@@ -31,6 +35,7 @@ function SEO({ description, lang, meta, title }) {
   const metaDescription = description || site.siteMetadata.description
   const defaultTitle = site.siteMetadata?.title
 
+  console.log(site)
   return (
     <Helmet
       htmlAttributes={{
@@ -38,6 +43,7 @@ function SEO({ description, lang, meta, title }) {
       }}
       title={title}
       titleTemplate={defaultTitle ? `%s | ${defaultTitle}` : null}
+      defaultTitle={defaultTitle}
       meta={[
         {
           name: `description`,
@@ -45,7 +51,7 @@ function SEO({ description, lang, meta, title }) {
         },
         {
           property: `og:title`,
-          content: title,
+          content: title || defaultTitle,
         },
         {
           property: `og:description`,
@@ -54,6 +60,14 @@ function SEO({ description, lang, meta, title }) {
         {
           property: `og:type`,
           content: `website`,
+        },
+        {
+          property: `og:url`,
+          content: site.siteMetadata.url,
+        },
+        {
+          property: `og:image`,
+          content: file.publicURL,
         },
         {
           name: `twitter:card`,
@@ -65,7 +79,7 @@ function SEO({ description, lang, meta, title }) {
         },
         {
           name: `twitter:title`,
-          content: title,
+          content: title || defaultTitle,
         },
         {
           name: `twitter:description`,
