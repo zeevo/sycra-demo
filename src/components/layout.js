@@ -10,9 +10,9 @@ import PropTypes from "prop-types"
 import styled from "styled-components"
 import { useStaticQuery, graphql, Link } from "gatsby"
 
-import Curtain from "./Curtain"
-import Header from "./Header"
-import Footer from "./Footer"
+import Curtain from "./curtain"
+import Header from "./header"
+import Footer from "./footer"
 
 const NavBarLink = styled(Link)`
   text-decoration: none;

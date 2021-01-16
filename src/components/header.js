@@ -1,7 +1,7 @@
 import { graphql, Link, useStaticQuery } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
-import Image from "./Image"
+import Image from "./image"
 import styled from "styled-components"
 
 const Header = styled.header`
